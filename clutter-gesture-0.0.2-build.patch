@@ -1,0 +1,11 @@
+diff -up clutter-gesture-0.0.2/engine/Makefile.am.0001 clutter-gesture-0.0.2/engine/Makefile.am
+--- clutter-gesture-0.0.2/engine/Makefile.am.0001	2009-09-15 04:58:18.000000000 +0200
++++ clutter-gesture-0.0.2/engine/Makefile.am	2011-06-25 11:19:43.287517965 +0200
+@@ -22,6 +22,7 @@
+ lib_LTLIBRARIES= libengine.la
+ 
+ libengine_la_SOURCES = engine.c engine.h plugin.h stroke.c stroke.h gesture_recog.c gesture_recog.h
++libengine_la_LIBADD = $(CLUTTERGESTURE_LIBS)
+ 
+ AM_CFLAGS = @CLUTTERGESTURE_CFLAGS@ -DPKGDATADIR="\"$(pkgdatadir)\""
+ 
