@@ -3,10 +3,10 @@
 %define libname		%mklibname %{name} %{api} %{major}
 %define develname	%mklibname %{name} %{api} -d
 
-Summary:	Gesture Library for Clutter
 Name:		clutter-gesture
 Version:	0.0.2.1
-Release:	2
+Release:	1
+Summary:	Gesture Library for Clutter
 Group:		System/Libraries
 License:	LGPLv2+ and MIT
 URL:		http://maemo.org/packages/view/clutter-gesture/
@@ -14,8 +14,8 @@ Source0:	http://git.moblin.org/cgit.cgi/%{name}/snapshot/%{name}-%{version}.tar.
 Patch1:		clutter-gesture-0.0.2-build.patch
 
 BuildRequires:	pkgconfig(clutter-x11-1.0)
-BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gl)
 
 %description
 This library allows clutter applications to be aware of gestures 
@@ -55,8 +55,8 @@ autoreconf -vfi
 	--disable-static
 
 %make LIBS=-lm CFLAGS+="-DGLIB_DISABLE_DEPRECATION_WARNINGS -DCLUTTER_DISABLE_DEPRECATION_WARNINGS" V=1
-
 %install
+rm -rf %{buildroot}
 %makeinstall_std
 
 #Remove libtool archives.
@@ -72,4 +72,11 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_libdir}/libengine.so
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/%{name}.pc
+
+
+
+%changelog
+* Mon Nov 28 2011 Matthew Dawkins <mattydaw@mandriva.org> 0.0.2.1-1
++ Revision: 734927
+- imported package clutter-gesture
 
