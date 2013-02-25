@@ -1,12 +1,12 @@
-%define api	0.0.2
-%define major		0
-%define libname		%mklibname %{name} %{api} %{major}
-%define develname	%mklibname %{name} %{api} -d
+%define	api	0.0.2
+%define	major	0
+%define	libname	%mklibname %{name} %{api} %{major}
+%define	devname	%mklibname %{name} %{api} -d
 
 Summary:	Gesture Library for Clutter
 Name:		clutter-gesture
 Version:	0.0.2.1
-Release:	2
+Release:	3
 Group:		System/Libraries
 License:	LGPLv2+ and MIT
 URL:		http://maemo.org/packages/view/clutter-gesture/
@@ -22,26 +22,27 @@ This library allows clutter applications to be aware of gestures
 and to easily attach some handlers to the gesture events. The library 
 supports both single and multi touch.
 
-%package -n %{libname}
+%package -n	%{libname}
 Summary:	Gesture Library for Clutter
 Group:		System/Libraries
 
-%description -n %{libname}
+%description -n	%{libname}
 This library allows clutter applications to be aware of gestures
 and to easily attach some handlers to the gesture events. The library
 supports both single and multi touch.
 
-%package -n %{develname}
+%package -n	%{devname}
 Summary:	Development files and headers for %{name}
 Group:		Development/Other
 Requires:	%{libname} = %{version}-%{release}
 
-%description -n %{develname}
+%description -n	%{devname}
 Files for development with %{name}.
 
 %prep
 %setup -q
 %apply_patches
+autoreconf -vfi
 
 # don't treat warnings as errors
 sed -i -e 's,-Werror,,g' configure.ac
@@ -50,7 +51,6 @@ sed -i -e 's,-Werror,,g' configure.ac
 cp NEWS COPYING
 
 %build
-autoreconf -vfi
 %configure2_5x \
 	--disable-static
 
@@ -59,17 +59,13 @@ autoreconf -vfi
 %install
 %makeinstall_std
 
-#Remove libtool archives.
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
-
 %files -n %{libname}
 %doc COPYING
 %{_libdir}/libcluttergesture-%{api}.so.%{major}*
 %{_libdir}/libengine.so.%{major}*
 
-%files -n %{develname}
+%files -n %{devname}
 %{_libdir}/libcluttergesture-%{api}.so
 %{_libdir}/libengine.so
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/%{name}.pc
-
