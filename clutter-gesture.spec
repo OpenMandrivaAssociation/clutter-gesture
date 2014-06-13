@@ -6,7 +6,7 @@
 Summary:	Gesture Library for Clutter
 Name:		clutter-gesture
 Version:	0.0.2.1
-Release:	7
+Release:	8
 Group:		System/Libraries
 License:	LGPLv2+ and MIT
 URL:		http://maemo.org/packages/view/clutter-gesture/
