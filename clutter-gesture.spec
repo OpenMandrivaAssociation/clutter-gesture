@@ -51,8 +51,8 @@ sed -i -e 's,-Werror,,g' configure.ac
 cp NEWS COPYING
 
 %build
-%configure2_5x \
-	--disable-static
+export CC=gcc
+%configure
 
 %make LIBS=-lm CFLAGS+="-DGLIB_DISABLE_DEPRECATION_WARNINGS -DCLUTTER_DISABLE_DEPRECATION_WARNINGS" V=1
 
