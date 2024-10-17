@@ -9,7 +9,7 @@ Version:	0.0.2.1
 Release:	14
 Group:		System/Libraries
 License:	LGPLv2+ and MIT
-URL:		http://maemo.org/packages/view/clutter-gesture/
+URL:		https://maemo.org/packages/view/clutter-gesture/
 Source0:	http://git.moblin.org/cgit.cgi/%{name}/snapshot/%{name}-%{version}.tar.bz2
 Patch1:		clutter-gesture-0.0.2-build.patch
 
